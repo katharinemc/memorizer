@@ -1,8 +1,8 @@
 function addItem() {
-  const adventure = document.getElementById("search").value;
+  const adventure = document.getElementById('search').value;
   const li = document.createElement('li');
   li.innerHTML = adventure;
-  document.getElementById("bucketList").append(li);
+  document.getElementById('bucketList').append(li);
 }
 
 $(addItem);
@@ -11,41 +11,41 @@ $(addItem);
 
 
 let cumulativeArray = [];
- let passageArray = [];
+let passageArray = [];
 
-  function addItem() {
+function addItem() {
 
-  const passage = document.getElementById("search").value;
+  const passage = document.getElementById('search').value;
   // const passage = "Four score and seven years ago our fathers brought forth on this continent a nation";
-   passageArray = passage.split(" ");
+  passageArray = passage.split(' ');
  
     
 
-   for(i = 0; i < passageArray.length; i++) {
+  for(i = 0; i < passageArray.length; i++) {
    
     const passageParagraph = document.createElement('p');
-    passageParagraph.id = "position" + i;
+    passageParagraph.id = 'position' + i;
     passageParagraph.innerHTML = passageArray[i];
-    document.getElementById("bucketList").append(passageParagraph);
-    return cumulativeArray = cumulativeArray + " " + passageArray[i];
+    document.getElementById('bucketList').append(passageParagraph);
+    return cumulativeArray = cumulativeArray + ' ' + passageArray[i];
     
-     }
+  }
 }
 
 function doMore () {
-   for(i = 0; i < cumulativeArray.length; i++)  {
-    cumulativeArray = cumulativeArray + " " + passageArray[i];
+  for(i = 0; i < cumulativeArray.length; i++)  {
+    cumulativeArray = cumulativeArray + ' ' + passageArray[i];
     const additionalText = document.createElement('p');
-    additionalText.id = "position" + (i+1);
+    additionalText.id = 'position' + (i+1);
     additionalText.innerHTML = cumulativeArray;
-    document.getElementById("position" + i).append(additionalText);
+    document.getElementById('position' + i).append(additionalText);
    
-   }
+  }
 
 
 
-  alert("I'm a button!");
-    const nextParagraph =  document.createElement('p');
-    nextParagraph.innerHtml = cumulativeArray;
-   document.getElementById("position0").append(nextParagraph);
+  alert('I\'m a button!');
+  const nextParagraph =  document.createElement('p');
+  nextParagraph.innerHtml = cumulativeArray;
+  document.getElementById('position0').append(nextParagraph);
 }         
