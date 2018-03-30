@@ -1,0 +1,125 @@
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Bucket List">
+    <title>Bucket-List</title>
+    <link href="mem.css" rel="stylesheet" type="text/css" />
+  
+
+    <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+
+
+<link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700|Merriweather:400,700,900" rel="stylesheet">
+  </head>
+
+  <body>
+
+<script>
+
+
+let passageArray = [];
+let printedArray =[]; 
+
+  function addItem() {
+
+  const passage = document.getElementById("search").value;
+  // const passage = "Four score and seven years ago our fathers brought forth on this continent a nation";
+   passageArray = passage.split(" ");
+ 
+
+     let firstWord = document.createElement('p');
+     firstWord.id = "word";
+     firstWord.innerHTML = passageArray[0];
+     printedArray.push(passageArray[0]); 
+     document.getElementById("bucketList").append(firstWord);
+
+// `${firstWord.innerHTML}`
+
+
+      let nextButton = document.createElement("button");
+      nextButton.className ="button center submit";
+      nextButton.innerHTML="Next Word";
+      document.getElementById("buttonhanger").append(nextButton); 
+      nextButton.addEventListener("click", doMore);
+   
+   }
+
+ 
+function doMore () {
+    if (printedArray.length < passageArray.length) {
+    let nextWord =  passageArray[printedArray.length];
+    printedArray.push(nextWord);
+    let updatedString = printedArray.join(" ")
+     document.getElementById("word").innerHTML = updatedString;
+    }
+
+    else if (printedArray.length == passageArray.length) {
+      printedArray = [];
+       let nextWord =  passageArray[printedArray.length];
+      printedArray.push(nextWord);
+      let updatedString = printedArray.join(" ")
+      document.getElementById("word").innerHTML = updatedString
+    }
+  }
+ 
+    
+ 
+
+ 
+// Take string from text box, create an array; 
+// Create a paragraph with array [0] and id [0]
+
+// remove weird front matter: 
+ 
+
+    
+    </script>
+
+    <header class="center nav-top" role="banner">
+      <h1>Memorizer</h1>
+       <h2>Memorize some text, word by word, line by line.</h2>
+    </header>
+    
+
+    <main role = "main" class="search-section">
+      <p>Memorizer helps you remember passages of text by focusing your attention on small chunks of the text.  The first word.  Then the first word and the second word.  Then the first word, the second word, and the third - and so on.  Reading these results aloud is essential to the memorization process.</p>
+     
+  
+
+       <form id="bucketListForm" action="action_page.js" class="center">
+         
+          <input type="text" id="search" placeholder="Add a passage to memorize" class="center" />
+          <input type="button" onclick="addItem()" value="Add" class="button submit" />
+        
+        </form>
+   
+      
+<section>
+  <div id="bucketList"></div>
+
+        <p class="center" id="buttonhanger"></p>
+</section>
+      
+         
+   
+     
+   
+    </main>
+
+    <footer class="center">
+      <h3>Memorizer is a KatharineMc project.</h3>
+      <nav>
+         <ul>
+            <li><a href="https://github.com/katharinemc/"><i class="fab fa-github-square fa-3x"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/newmankatharine/"><i class="fab fa-linkedin fa-3x"></i></a></li>
+            <li><a href="TKTK"> <i class="fas fa-envelope fa-3x"></i> </a></li>
+        </ul>
+      </nav>
+     
+  </footer>
+  </body>
+
+</html>
