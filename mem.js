@@ -1,51 +1,42 @@
-function addItem() {
-  const adventure = document.getElementById('search').value;
-  const li = document.createElement('li');
-  li.innerHTML = adventure;
-  document.getElementById('bucketList').append(li);
-}
-
-$(addItem);
-
-
-
-
-let cumulativeArray = [];
+'use strict';
+console.log('all revved up');
 let passageArray = [];
+let printedArray =[]; 
 
 function addItem() {
-
+  event.preventDefault();
   const passage = document.getElementById('search').value;
   // const passage = "Four score and seven years ago our fathers brought forth on this continent a nation";
   passageArray = passage.split(' ');
  
-    
+  let firstWord = document.createElement('p');
+  firstWord.id = 'word';
+  firstWord.innerHTML = passageArray[0];
+  printedArray.push(passageArray[0]); 
+  document.getElementById('bucketList').append(firstWord);
 
-  for(i = 0; i < passageArray.length; i++) {
-   
-    const passageParagraph = document.createElement('p');
-    passageParagraph.id = 'position' + i;
-    passageParagraph.innerHTML = passageArray[i];
-    document.getElementById('bucketList').append(passageParagraph);
-    return cumulativeArray = cumulativeArray + ' ' + passageArray[i];
-    
-  }
+  let nextButton = document.createElement('button');
+  nextButton.className ='button center submit';
+  nextButton.innerHTML='Next Word';
+  document.getElementById('buttonhanger').append(nextButton); 
+  nextButton.addEventListener('click', doMore);
+  
+  let inputForm=  document.getElementById('bucketListForm');
+  inputForm.parentNode.removeChild(inputForm);
 }
 
 function doMore () {
-  for(i = 0; i < cumulativeArray.length; i++)  {
-    cumulativeArray = cumulativeArray + ' ' + passageArray[i];
-    const additionalText = document.createElement('p');
-    additionalText.id = 'position' + (i+1);
-    additionalText.innerHTML = cumulativeArray;
-    document.getElementById('position' + i).append(additionalText);
-   
+  if (printedArray.length < passageArray.length) {
+    let nextWord =  passageArray[printedArray.length];
+    printedArray.push(nextWord);
+    let updatedString = printedArray.join(' ');
+    document.getElementById('word').innerHTML = updatedString;
   }
-
-
-
-  alert('I\'m a button!');
-  const nextParagraph =  document.createElement('p');
-  nextParagraph.innerHtml = cumulativeArray;
-  document.getElementById('position0').append(nextParagraph);
-}         
+  else if (printedArray.length === passageArray.length) {
+    printedArray = [];
+    let nextWord =  passageArray[printedArray.length];
+    printedArray.push(nextWord);
+    let updatedString = printedArray.join(' ');
+    document.getElementById('word').innerHTML = updatedString;
+  }
+}
